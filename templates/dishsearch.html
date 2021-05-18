@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>We Share the meals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Playfair Display";
+  letter-spacing: 2px;}
+.w3-bar-block .w3-bar-item {padding:20px}
+input { width: 300px;}
+
+
+</style>
+<body>
+
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+    <img class="w3-image" src="{{url_for('static',filename='header.jpeg')}}" alt="Hamburger Catering" width="1600"
+         height="800">
+    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+        <h1 class="w3-xxlarge">Tìm kiếm món</h1>
+    </div>
+</header>
+
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <a href="#home" class="w3-bar-item w3-button">We share the meals</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="{{ url_for('menu') }}">
+                <li class="w3-bar-item w3-button">Ngã rẽ</li></a>
+        </div>
+    </div>
+</div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+    <div class="w3-row-padding w3-padding-16 w3-center">
+        <form method="POST" action="">
+            <div class="w3-quarter">
+                <h3>Nhà Hàng</h3>
+            </div>
+            <div class="w3-quarter">
+                <h3>Món</h3>
+            </div>
+            <div class="w3-quarter">
+                <h3>Giá</h3>
+            </div>
+            <div class="w3-quarter">
+                <h3>Đánh giá</h3>
+            </div>
+        </form>
+    </div>
+    <div class="w3-row-padding w3-padding-16 w3-center">
+        <form method="POST" action="">
+            <div class="w3-quarter">
+                <input type="text" name="id" contenteditable="true" class="w3-border w3-padding"/>
+            </div>
+            <div class="w3-quarter">
+                <input type="text" name="loginname" contenteditable="true" class="w3-border w3-padding"/>
+            </div>
+            <div class="w3-quarter">
+                <input type="text" name="city" contenteditable="true" class="w3-border w3-padding"/>
+            </div>
+            <div class="w3-quarter">
+                <input type="text" name="district" contenteditable="true" class="w3-border w3-padding"/>
+            </div>
+            <input type="submit" class="w3-button w3-theme" name="login" value="_">
+        </form>
+    </div>
+    <!-- First Photo Grid-->
+    <div>
+        {% for row in results %}
+        <tr>
+            <div class="w3-row-padding w3-padding-16 w3-center">
+                <div class="w3-quarter">
+                    <p>@{{ row[0] }}</p>
+                </div>
+                <div class="w3-quarter">
+                    <p>{{ row[1] }}</p>
+                </div>
+                <div class="w3-quarter">
+                    <p>{{ row[3]}}</p>
+                </div>
+                <div class="w3-quarter">
+                    <p>{{ row[2] }}</p>
+                </div>
+            </div>
+        </tr>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
